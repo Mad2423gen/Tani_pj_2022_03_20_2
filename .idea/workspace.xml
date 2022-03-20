@@ -4,28 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc822c3-3ae9-44f2-9a2a-222152d061a3" name="変更" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/Tani_pj_2022_03_20.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scrayper_tt.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scrayper_tt_1.02.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/address.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chromedriver" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/g_email.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mn.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mn_beta.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rains_scray.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rename.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/selenium_ide.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/新案件2022-03-20.txt" afterDir="false" />
+    <list default="true" id="9fc822c3-3ae9-44f2-9a2a-222152d061a3" name="変更" comment="最初の更新2022-03-20">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rains_scray.py" beforeDir="false" afterPath="$PROJECT_DIR$/rains_scray.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,6 +126,14 @@
       <option name="presentableId" value="Default" />
       <updated>1647742579977</updated>
     </task>
+    <task id="LOCAL-00001" summary="最初の更新2022-03-20">
+      <created>1647774404708</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1647774404708</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -169,6 +158,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="最初の更新2022-03-20" />
+    <option name="LAST_COMMIT_MESSAGE" value="最初の更新2022-03-20" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
