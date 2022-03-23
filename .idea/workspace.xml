@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc822c3-3ae9-44f2-9a2a-222152d061a3" name="変更" comment="更新2022-03-20&#10;IDとパスワードの操作追加">
-      <change afterPath="$PROJECT_DIR$/From_seleniumIDE2022-03-23.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/From_seleniumIDE2022-03-23_2.py" afterDir="false" />
+    <list default="true" id="9fc822c3-3ae9-44f2-9a2a-222152d061a3" name="変更" comment="更新2022-03-23&#10;メインページの最後までの動作">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rains_scray.py" beforeDir="false" afterPath="$PROJECT_DIR$/rains_scray.py" afterDir="false" />
     </list>
@@ -145,7 +143,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647777181103</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="更新2022-03-23&#10;メインページの最後までの動作">
+      <created>1648042113403</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1648042113403</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -175,7 +180,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="最初の更新2022-03-20" />
     <MESSAGE value="更新2022-03-20&#10;IDとパスワードの操作追加" />
-    <option name="LAST_COMMIT_MESSAGE" value="更新2022-03-20&#10;IDとパスワードの操作追加" />
+    <MESSAGE value="更新2022-03-23&#10;メインページの最後までの動作" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新2022-03-23&#10;メインページの最後までの動作" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
