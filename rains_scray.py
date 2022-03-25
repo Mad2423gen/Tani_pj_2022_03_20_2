@@ -1,5 +1,7 @@
 
 import time
+import os
+import csv
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
@@ -29,7 +31,7 @@ selects_dropdown = [page1, page2, page3, page4, page5, page6]
 
 # =================================================================
 
-def mainpagescray(url,values):
+def mainpagescray(dropdown_values):
     driver = webdriver.Chrome(ChromeDriverManager().install())
     # ログインページオープン
     driver.get(rains_top_url)
@@ -94,34 +96,35 @@ def mainpagescray(url,values):
 
 
     # 抽出処理=====================================================
+
     # 件名のみ読み込み（物件番号で識別）
-    bukken_nums = driver.find_elements\
+    bukken_num_tags = driver.find_elements\
         (By.CSS_SELECTOR, "div.p-table-body-item")
+
+
     # 件名保存
     # ファイル名整形
-    filename = "data/{}.txt".format(values.split(':')[1].replace("']", ""))
-    # ファイル保存
-    for name in bukken_nums:
-        with open(filename, 'w', encoding='utf-8')as f:
-            f.write(name.text)
+    filename = "data/{}.txt".format(dropdown_values.split(':')[1].replace("']", ""))
+    # ファイル有無の確認及び書き込み
+    bukken_nums = []
+    if not os.path.isfile('data/{}'.format(filename)):
+        # ファイル保存
+        for name in bukken_num_tags:
+            with open(filename, 'w', encoding='utf-8') as f:
+                f.write(name.text)
     # ============================================================
+
+    # ファイル比較差分検知============================================
+    # 差異があれば記録
+
+
+
+
 
     # 「戻る」アイコンクリック
     driver.find_element(By.CSS_SELECTOR, "button.p-frame-backer").click()
 
     time.sleep(10)
-
-
-if __name__ == '__main__':
-
-    # mainpagescray(rains_top_url,selects_dropdown)
-    # driver.close()
-
-
-
-
-
-
 
 
 
