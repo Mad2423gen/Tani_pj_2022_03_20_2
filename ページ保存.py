@@ -1,4 +1,12 @@
+# =============================================================================
+
+#     　　　　　　　　　　　メインページ保存用スクリプト
+
+# =============================================================================
+
+
 import time
+import lxml
 import os
 import csv
 from selenium import webdriver
@@ -8,6 +16,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support import expected_conditions as EC
+from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup
 
 driver = webdriver.Chrome(ChromeDriverManager().install())
 
@@ -26,10 +36,7 @@ selects_dropdown = [
     "//option[. = '03:　三重県桑名市']",
     "//option[. = '04:　滋賀県戸建て']",
     "//option[. = '05:　滋賀土地']",
-    "//option[. = '06:　京都市内１棟']"
-]
-
-
+    "//option[. = '06:　京都市内１棟']"]
 # =================================================================
 
 # ログインページオープン
@@ -72,15 +79,15 @@ dropdown.find_element(By.XPATH, "//option[. = '01:　三重四日市　外全']"
 time.sleep(1)
 
 element = driver.find_element(By.ID, "__BVID__103")
-time.sleep(1)
+# time.sleep(1)
 
 actions = ActionChains(driver)
-time.sleep(1)
+# time.sleep(1)
 
 actions.move_to_element(element).click_and_hold().perform()
 element = driver.find_element(By.ID, "__BVID__103")
 actions = ActionChains(driver)
-time.sleep(1)
+# time.sleep(1)
 
 actions.move_to_element(element).release().perform()
 time.sleep(2)
@@ -94,31 +101,17 @@ driver.find_element(By.CSS_SELECTOR,
 time.sleep(2)
 # 下部「検索」ボタンクリック
 driver.find_element(By.CSS_SELECTOR, ".btn-primary").click()
+time.sleep(10)
+
+html = driver.page_source
 time.sleep(5)
 
-    # ============================================================
+# soup = BeautifulSoup(html,'lxml')
 
-# csv reading
-def csv_read(filename):
-    with open(filename, 'r', encoding='utf-8_sig', newline='') as cfr:
-        cfr = csv.reader(filename, delimiter=",", doublequote=True,
-                         lineterminator="\r\n")
-        return cfr
+with open("page_source.txt",'w',encoding='utf-8') as sc:
+    sc.write(html)
 
-# csv writing
-def csv_rtite_a(filename, input_data):
-    with open(filename) as cfa:
-        with open('start.csv', 'a') as f:
-            writer = csv.writer(f)
-            writer.writerow(input_data)
 
-# 新着物件要素読み込み
-def new_search():
-    new_elements = []
-    # 物件番号
-    new_elements_num = driver.find_elements('div.p-table-body-item')
-    # 物件種目
 
-    # ドロップダウン検索ページへ「戻る」アイコンクリック
-driver.find_element(By.CSS_SELECTOR, "button.p-frame-backer").click()
-time.sleep(10)
+time.sleep(5)
+driver.close()

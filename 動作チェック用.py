@@ -1,3 +1,9 @@
+# ==============================================================================
+
+#                    　RAINS 動作チェック用ファイル
+
+# ==============================================================================
+
 import time
 import os
 import csv
@@ -8,6 +14,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support import expected_conditions as EC
+from bs4 import BeautifulSoup
 
 driver = webdriver.Chrome(ChromeDriverManager().install())
 
@@ -26,10 +33,7 @@ selects_dropdown = [
     "//option[. = '03:　三重県桑名市']",
     "//option[. = '04:　滋賀県戸建て']",
     "//option[. = '05:　滋賀土地']",
-    "//option[. = '06:　京都市内１棟']"
-]
-
-
+    "//option[. = '06:　京都市内１棟']"]
 # =================================================================
 
 # ログインページオープン
@@ -62,23 +66,23 @@ driver.find_element(By.CSS_SELECTOR,
 time.sleep(5)
 # 「検索条件を表示」クリック
 driver.find_element(By.CSS_SELECTOR,
-                    ".card:nth-child(3) .p-collapse-icon").click()
+                    ".card:nth-child(3) .align-middle:nth-child(1)").click()
 time.sleep(2)
 # 「保存した検索条件の選択」クリック
-dropdown = driver.find_element(By.ID, "__BVID__103")
+dropdown = driver.find_element(By.ID, "__BVID__102")
 time.sleep(1)
 # セレクトボックス内の保存条件をクリック
 dropdown.find_element(By.XPATH, "//option[. = '01:　三重四日市　外全']").click()
 time.sleep(1)
 
-element = driver.find_element(By.ID, "__BVID__103")
+element = driver.find_element(By.ID, "__BVID__102")
 time.sleep(1)
 
 actions = ActionChains(driver)
 time.sleep(1)
 
 actions.move_to_element(element).click_and_hold().perform()
-element = driver.find_element(By.ID, "__BVID__103")
+element = driver.find_element(By.ID, "__BVID__102")
 actions = ActionChains(driver)
 time.sleep(1)
 
@@ -90,35 +94,29 @@ driver.find_element(By.CSS_SELECTOR,
 time.sleep(2)
 # ポップアップメニュー　クリック
 driver.find_element(By.CSS_SELECTOR,
-                    "#\\__BVID__602___BV_modal_footer_ > .btn").click()
+                    "#\\__BVID__601___BV_modal_footer_ > .btn").click()
 time.sleep(2)
 # 下部「検索」ボタンクリック
 driver.find_element(By.CSS_SELECTOR, ".btn-primary").click()
-time.sleep(5)
-
-    # ============================================================
-
-# csv reading
-def csv_read(filename):
-    with open(filename, 'r', encoding='utf-8_sig', newline='') as cfr:
-        cfr = csv.reader(filename, delimiter=",", doublequote=True,
-                         lineterminator="\r\n")
-        return cfr
-
-# csv writing
-def csv_rtite_a(filename, input_data):
-    with open(filename) as cfa:
-        with open('start.csv', 'a') as f:
-            writer = csv.writer(f)
-            writer.writerow(input_data)
-
-# 新着物件要素読み込み
-def new_search():
-    new_elements = []
-    # 物件番号
-    new_elements_num = driver.find_elements('div.p-table-body-item')
-    # 物件種目
-
-    # ドロップダウン検索ページへ「戻る」アイコンクリック
-driver.find_element(By.CSS_SELECTOR, "button.p-frame-backer").click()
 time.sleep(10)
+
+# 抽出テスト
+
+html = driver.page_source
+soup = BeautifulSoup(html, 'html_parser')
+print(soup.text)
+
+
+
+
+
+
+
+
+driver.close()
+
+
+
+
+
+
