@@ -1,4 +1,5 @@
 import time
+import re
 import os
 import csv
 from selenium import webdriver
@@ -8,8 +9,9 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support import expected_conditions as EC
+from bs4 import BeautifulSoup
 
-driver = webdriver.Chrome(ChromeDriverManager().install())
+# driver = webdriver.Chrome(ChromeDriverManager().install())
 
 # RAINS アカウント情報 ==============================================
 
@@ -31,8 +33,8 @@ selects_dropdown = [
 
 
 # =================================================================
-
 # ログインページオープン
+driver = webdriver.Chrome(ChromeDriverManager().install())
 driver.get(rains_top_url)
 time.sleep(5)
 # ID入力
@@ -56,69 +58,102 @@ time.sleep(5)
 
 
 
-# 売買物件検索
-driver.find_element(By.CSS_SELECTOR,
-                    ".card:nth-child(2) .row:nth-child(3) > .pr-2 > .btn").click()
-time.sleep(5)
-# 「検索条件を表示」クリック
-driver.find_element(By.CSS_SELECTOR,
-                    ".card:nth-child(3) .p-collapse-icon").click()
-time.sleep(2)
-# 「保存した検索条件の選択」クリック
-dropdown = driver.find_element(By.ID, "__BVID__103")
-time.sleep(1)
-# セレクトボックス内の保存条件をクリック
-dropdown.find_element(By.XPATH, "//option[. = '01:　三重四日市　外全']").click()
-time.sleep(1)
+def mainpage_scrowl(select_page_one):
 
-element = driver.find_element(By.ID, "__BVID__103")
-time.sleep(1)
-
-actions = ActionChains(driver)
-time.sleep(1)
-
-actions.move_to_element(element).click_and_hold().perform()
-element = driver.find_element(By.ID, "__BVID__103")
-actions = ActionChains(driver)
-time.sleep(1)
-
-actions.move_to_element(element).release().perform()
-time.sleep(2)
-# 「読込」ボタンクリック
-driver.find_element(By.CSS_SELECTOR,
-                    ".mt-3:nth-child(2) > .row:nth-child(1) > .col-sm-2 > .btn").click()
-time.sleep(2)
-# ポップアップメニュー　クリック
-driver.find_element(By.CSS_SELECTOR,
-                    "#\\__BVID__602___BV_modal_footer_ > .btn").click()
-time.sleep(2)
-# 下部「検索」ボタンクリック
-driver.find_element(By.CSS_SELECTOR, ".btn-primary").click()
-time.sleep(5)
+    # 以下メインページ=================================================================
+    driver.get('https://system.reins.jp/main/BK/GBK001210')
+    # 売買物件検索
+    time.sleep(3)
+    # 「検索条件を表示」クリック
+    driver.find_element(By.CSS_SELECTOR,"span.align-middle").click()
+    time.sleep(2)
+    # 「保存した検索条件の選択」クリック
+    dropdown = driver.find_element(By.ID, "__BVID__14")
+    time.sleep(1)
+    # セレクトボックス内の保存条件をクリック
+    dropdown.find_element(By.XPATH, select_page_one).click()
+    time.sleep(2)
+    # 「読込」ボタンクリック
+    driver.find_element(By.CSS_SELECTOR,
+                        ".mt-3:nth-child(2) > .row:nth-child(1) > .col-sm-2 > .btn").click()
+    time.sleep(2)
+    # ポップアップメニュー　クリック
+    driver.find_element(By.CSS_SELECTOR,
+                        "#__BVID__513___BV_modal_footer_ > button").click()
+    time.sleep(1)
+    # 下部「検索」ボタンクリック
+    driver.find_element(By.CSS_SELECTOR, "button.btn.p-button.btn-primary.btn-block.px-0").click()
+    time.sleep(3)
 
     # ============================================================
 
-# csv reading
-def csv_read(filename):
-    with open(filename, 'r', encoding='utf-8_sig', newline='') as cfr:
-        cfr = csv.reader(filename, delimiter=",", doublequote=True,
-                         lineterminator="\r\n")
-        return cfr
+    # csv reading
+    def csv_read(filename):
+        with open(filename, encoding='utf8', newline='') as f:
+            csvreader = csv.reader(f)
+            for row in csvreader:
+                print(row)
 
-# csv writing
-def csv_rtite_a(filename, input_data):
-    with open(filename) as cfa:
-        with open('start.csv', 'a') as f:
-            writer = csv.writer(f)
-            writer.writerow(input_data)
 
-# 新着物件要素読み込み
-def new_search():
-    new_elements = []
+    # ============================================================
+
+    # 記録用要素抽出
+
+    # 検索ページ項目
+    pagename = select_page_one.split(':')[-1].replace("']","")
+
+    # 新着データ取得
+    html = driver.page_source.encode('utf-8')
+    soup = BeautifulSoup(html, 'lxml')
+
     # 物件番号
-    new_elements_num = driver.find_elements('div.p-table-body-item')
+    bukken_nums = soup.select(
+        '#__BVID__545 > div > div.p-table.small > div.p-table-body > div > div:nth-child(4)')
     # 物件種目
+    bukken_object_typies = soup.select('#__BVID__545 > div > div.p-table.small > div.p-table-body > div > div:nth-child(5)')
+    # 価格
+    bukken_plicies = soup.select('#__BVID__545 > div > div.p-table.small > div.p-table-body > div > div.p-table-body-item.font-weight-bold')
 
-    # ドロップダウン検索ページへ「戻る」アイコンクリック
-driver.find_element(By.CSS_SELECTOR, "button.p-frame-backer").click()
-time.sleep(10)
+
+    for i, num in enumerate(bukken_nums):
+        # 物件データとしてまとめる
+        bukken_data = [num.text, pagename.replace("\u3000",""),
+                       bukken_object_typies[i].text, bukken_plicies[i].text]
+
+        print(bukken_data)
+
+        with open('new_data.csv', 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow(bukken_data)
+
+
+    # # ファイルの扱い　ファイルがあると記録されないのを修正すること
+    # if os.path.isfile('last_data.csv'):
+    #     print('記録呼出・表示')
+    #     with open('last_data.csv', encoding='utf8', newline='') as f:
+    #         csvreader = csv.reader(f)
+    #         for row in csvreader:
+    #             print(row)
+    # else:
+    #     print('新規記録保存中')
+    #     for bukken_data in bukken_datas_new:
+    #         with open('last_data.csv', 'a', newline='') as f:
+    #             writer = csv.writer(f)
+    #             writer.writerow(bukken_data)
+
+
+
+    # # ドロップダウン検索ページへ「戻る」アイコンクリック
+
+
+if __name__ == '__main__':
+
+    for name in selects_dropdown:
+        mainpage_scrowl(name)
+    driver.close()
+
+    # テスト用
+    # name = "//option[. = '01:　三重四日市　外全']"
+    # mainpage_scrowl(name)
+
+

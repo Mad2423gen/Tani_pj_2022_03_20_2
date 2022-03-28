@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc822c3-3ae9-44f2-9a2a-222152d061a3" name="変更" comment="更新：2022-03-25 14:17&#10;差分検出をCSVにしようと思案中&#10;検出要素をどれにするか調査すること">
-      <change afterPath="$PROJECT_DIR$/From_seleniumIDE2022-03-27_3.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/page_source.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ページ保存.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/動作チェック用.py" afterDir="false" />
+    <list default="true" id="9fc822c3-3ae9-44f2-9a2a-222152d061a3" name="変更" comment="更新：2022-03-27 22:17&#10;ページ保存スクリプト追加&#10;HTMLファイル保存&#10;メインページ誤作動修正">
+      <change afterPath="$PROJECT_DIR$/test.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/制作メモ.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rains_scray.py" beforeDir="false" afterPath="$PROJECT_DIR$/rains_scray.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/動作チェック用.py" beforeDir="false" afterPath="$PROJECT_DIR$/動作チェック用.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +52,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
-  <component name="RunManager" selected="Python.ページ保存">
+  <component name="RunManager" selected="Python.rains_scray">
     <configuration name="動作チェック用" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Tani_pj_2022_03_20" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -168,7 +167,6 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.ページ保存" />
         <item itemvalue="Python.rains_scray" />
         <item itemvalue="Python.動作チェック用" />
         <item itemvalue="Python テスト.Python テスト (selenium_ide.py 内)" />
@@ -227,7 +225,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648185536937</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="更新：2022-03-27 22:17&#10;ページ保存スクリプト追加&#10;HTMLファイル保存&#10;メインページ誤作動修正">
+      <created>1648387104636</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1648387104636</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -260,7 +265,8 @@
     <MESSAGE value="更新2022-03-23&#10;メインページの最後までの動作" />
     <MESSAGE value="更新：2022-03-25　12:18&#10;ページソースから物件番号抽出処理" />
     <MESSAGE value="更新：2022-03-25 14:17&#10;差分検出をCSVにしようと思案中&#10;検出要素をどれにするか調査すること" />
-    <option name="LAST_COMMIT_MESSAGE" value="更新：2022-03-25 14:17&#10;差分検出をCSVにしようと思案中&#10;検出要素をどれにするか調査すること" />
+    <MESSAGE value="更新：2022-03-27 22:17&#10;ページ保存スクリプト追加&#10;HTMLファイル保存&#10;メインページ誤作動修正" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新：2022-03-27 22:17&#10;ページ保存スクリプト追加&#10;HTMLファイル保存&#10;メインページ誤作動修正" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
