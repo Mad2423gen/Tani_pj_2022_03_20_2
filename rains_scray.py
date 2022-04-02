@@ -109,9 +109,11 @@ def mainpage_scrowl(select_page_one):
     bukken_nums = soup.select(
         '#__BVID__545 > div > div.p-table.small > div.p-table-body > div > div:nth-child(4)')
     # 物件種目
-    bukken_object_typies = soup.select('#__BVID__545 > div > div.p-table.small > div.p-table-body > div > div:nth-child(5)')
+    bukken_object_typies = soup.select('#__BVID__545 > div > div.p-table.small > div.p-table-body '
+                                       '> div > div:nth-child(5)')
     # 価格
-    bukken_plicies = soup.select('#__BVID__545 > div > div.p-table.small > div.p-table-body > div > div.p-table-body-item.font-weight-bold')
+    bukken_plicies = soup.select('#__BVID__545 > div > div.p-table.small > div.p-table-body > div '
+                                 '> div.p-table-body-item.font-weight-bold')
 
 
     for i, num in enumerate(bukken_nums):
@@ -143,27 +145,17 @@ if __name__ == '__main__':
                           .replace(' ', '')))
             mainpage_scrowl(name)
         driver.close()
-        # 新旧ファイル差分抽出
-        new_csv = []
-        last_csv = []
-        with open('new_data.csv', encoding='utf8', newline='') as fn:
-            csvreader = csv.reader(fn)
-            for row in csvreader:
-                new_csv.append(row)
-        with open('last_data.csv', encoding='utf8', newline='') as fl:
-            csvreader = csv.reader(fl)
-            for row in csvreader:
-                last_csv.append(row)
-        # 集合で差分検出
-        increment_data = set(new_csv) - set(last_csv)
-        # テスト用表示（削除OK）
-        for i_data in increment_data:
-            print(i_data)
 
-        os.remove('last_data.csv')
-    else:
-        print('WEB受付時間外により処理をスキップ')
-        pass
+
+
+
+
+
+
+    #     os.remove('last_data.csv')
+    # else:
+    #     print('WEB受付時間外により処理をスキップ')
+    #     pass
 
 
 
