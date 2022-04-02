@@ -46,7 +46,7 @@ from bs4 import BeautifulSoup
 # last_csv = []
 # with open('new_data.csv', encoding='utf8', newline='') as fn:
 #     csvreader = csv.reader(fn)
-#     with open('last_data.csv', encoding='utf8', newline='') as fn:
+#     with open('new_data.csv', encoding='utf8', newline='') as fn:
 #         csvreader2 = csv.reader(fn)
 
 
@@ -74,7 +74,7 @@ def sabun_select(new, last):
 
 if __name__ == '__main__':
     file_new = 'new_data.csv'
-    file_last = 'last_data.csv'
+    file_last = 'new_data.csv'
     # messageの返り値はリスト
     message = sabun_select(file_new,file_last)
 

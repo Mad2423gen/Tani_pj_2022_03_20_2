@@ -4,10 +4,45 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc822c3-3ae9-44f2-9a2a-222152d061a3" name="変更" comment="更新：2022-04-02　11:43&#10;ファイルの差分抽出&#10;クライアントのもとファイルインポート">
-      <change afterPath="$PROJECT_DIR$/last_data.csv" afterDir="false" />
+    <list default="true" id="9fc822c3-3ae9-44f2-9a2a-222152d061a3" name="変更" comment="更新：2022-04-02　14:24&#10;関数化完了&#10;旧、新ファイル差分動作テスト完了&#10;&#10;あとは本体と連結作業のみ">
+      <change afterPath="$PROJECT_DIR$/data3/send_record.txt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/new_data.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2023_03_30_預かったファイル/Scrayper_tt_1.02 .py" beforeDir="false" afterPath="$PROJECT_DIR$/2023_03_30_預かったファイル/Scrayper_tt_1.021 .py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2023_03_30_預かったファイル/mn.py" beforeDir="false" afterPath="$PROJECT_DIR$/2023_03_30_預かったファイル/mn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/at_title1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/at_title1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/at_title2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/at_title2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/at_url1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/at_url1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/at_url2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/at_url2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/kenbika_bukken1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/kenbika_bukken1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/kenbika_bukken2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/kenbika_bukken2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/kenbika_url1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/kenbika_url1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/kenbika_url2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/kenbika_url2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/nifty_title1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/nifty_title1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/nifty_title2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/nifty_title2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/nifty_url1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/nifty_url1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/nifty_url2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/nifty_url2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/rakumachi_title1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/rakumachi_title1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/rakumachi_title2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/rakumachi_title2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/rakumachi_url1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/rakumachi_url1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/rakumachi_url2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/rakumachi_url2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data2/at_title1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data2/at_title1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data2/at_title2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data2/at_title2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data2/at_url1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data2/at_url1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data2/at_url2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data2/at_url2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data2/kenbika_bukken1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data2/kenbika_bukken1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data2/kenbika_bukken2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data2/kenbika_bukken2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data2/kenbika_url1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data2/kenbika_url1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data2/kenbika_url2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data2/kenbika_url2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data2/nifty_title1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data2/nifty_title1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data2/nifty_title2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data2/nifty_title2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data2/nifty_url1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data2/nifty_url1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data2/nifty_url2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data2/nifty_url2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data2/rakumachi_title1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data2/rakumachi_title1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data2/rakumachi_title2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data2/rakumachi_title2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data2/rakumachi_url1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data2/rakumachi_url1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data2/rakumachi_url2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data2/rakumachi_url2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mn.py" beforeDir="false" afterPath="$PROJECT_DIR$/mn.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rains_scray.py" beforeDir="false" afterPath="$PROJECT_DIR$/rains_scray.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/動作チェック用.py" beforeDir="false" afterPath="$PROJECT_DIR$/動作チェック用.py" afterDir="false" />
     </list>
@@ -51,6 +86,11 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
   </component>
   <component name="RunManager" selected="Python.rains_scray">
     <configuration name="動作チェック用" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -116,6 +156,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="mn" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Tani_pj_2022_03_20" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/mn.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="rains_scray" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Tani_pj_2022_03_20" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -168,6 +229,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.rains_scray" />
+        <item itemvalue="Python.mn" />
         <item itemvalue="Python.動作チェック用" />
         <item itemvalue="Python テスト.Python テスト (selenium_ide.py 内)" />
         <item itemvalue="Python テスト.selenium_ide.Test1test の Python テスト" />
@@ -253,7 +315,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648867481991</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="更新：2022-04-02　14:24&#10;関数化完了&#10;旧、新ファイル差分動作テスト完了&#10;&#10;あとは本体と連結作業のみ">
+      <created>1648877176467</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1648877176467</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -290,7 +359,8 @@
     <MESSAGE value="更新：2022-03-28&#10;要素取得、ページ巡回まで&#10;終わり" />
     <MESSAGE value="更新：2022-03-29&#10;時間設定追加&#10;コード関数化整合性確認&#10;&#10;157行目〜&#10;差分判別コード作成（未検証）" />
     <MESSAGE value="更新：2022-04-02　11:43&#10;ファイルの差分抽出&#10;クライアントのもとファイルインポート" />
-    <option name="LAST_COMMIT_MESSAGE" value="更新：2022-04-02　11:43&#10;ファイルの差分抽出&#10;クライアントのもとファイルインポート" />
+    <MESSAGE value="更新：2022-04-02　14:24&#10;関数化完了&#10;旧、新ファイル差分動作テスト完了&#10;&#10;あとは本体と連結作業のみ" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新：2022-04-02　14:24&#10;関数化完了&#10;旧、新ファイル差分動作テスト完了&#10;&#10;あとは本体と連結作業のみ" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

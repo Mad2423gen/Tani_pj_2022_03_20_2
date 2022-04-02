@@ -2,6 +2,7 @@
 # 更新：2022年1月18日Gmail不具合修正
 # 更新：2022-02-08ドライバーがバージョンが上がると
 # 対応しなくなるのでwebdriver-manager導入
+# 2022-04-02　RAINSオプション追加
 # 
 
 import os
@@ -13,6 +14,10 @@ from time import sleep
 from selenium import webdriver
 import selenium
 from bs4 import BeautifulSoup
+# RAINS関数追加
+import rains_scray as rains
+
+
 # 変数定義===================================================
 path = os.getcwd()
 data_dir = path + "/data"
@@ -33,11 +38,11 @@ send_file = "data3/send_record.txt"
 # ファイル書き込み
 # 書き換え
 def write_w(bunshyou_text, file_name):
-    with open(file_name, "w",encoding="utf-8") as bun:
+    with open(file_name, "w",encoding="utf-8_sig") as bun:
         bun.write(bunshyou_text)
 # 追記
 def write_a(bunsyou_text,file_name):
-    with open(file_name,"a",encoding="utf-8") as bun:
+    with open(file_name,"a",encoding="utf-8_sig") as bun:
         bun.write(bunsyou_text)
 # 件名抽出、保存
 def kenmei_selection(title_xpath, write_file_path):
@@ -503,165 +508,175 @@ driver.quit()
 # ニフティ不動産２終了==========================================
 #
 # アットホーム１==============================================
-# from selenium.webdriver.support.ui import Select
-#
-# ahtome_url_top = "https://toushi-athome.jp/"
-# athome_url = "https://toushi-athome.jp/bklist?ITEM=ei&ART=42"
-#
-# from webdriver_manager.chrome import ChromeDriverManager
-# driver = webdriver.Chrome(ChromeDriverManager().install())
-# # driver = webdriver.Chrome("./chromedriver")
-# driver.get(athome_url)
-# time.sleep(10)
-# driver.find_element_by_link_text("滋賀").click()
-# time.sleep(3)
-# driver.find_element_by_xpath("//div/div/div[2]"
-#                              "/ul/li[1]/img").click()
-# time.sleep(3)
-# driver.find_element_by_id("GROUP_00370")
-# time.sleep(3)
-# chk_shiga = driver.find_element_by_css_selector\
-#     ("input[name='GROUP'][value='00370']")
-# chk_shiga.click()
-# time.sleep(4)
-# driver.find_element_by_xpath("//li[9]/img[1]").click()
-# time.sleep(4)
-# element = driver.find_element_by_id("sortcombo_1")
-# select_num = Select(element)
-# select_num.select_by_value("33")
-#
-# time.sleep(10)
-#
-# at_titlefile1= "data/at_title1.txt"
-# at_urlfile1 = "data/at_url1.txt"
-# old_at_titlefile1 = "data2/at_title1.txt"
-# old_at_urlfile1 = "data2/at_url1.txt"
-#
-# # 新着読み込み
-# write_w("",at_titlefile1)
-# write_w("",at_urlfile1)
-# at_css = "p.station > a"
-#
-# elems = driver.find_elements_by_css_selector(at_css)
-# for elem in elems:
-#     atitle = elem.text
-#     aurl = elem.get_attribute("href")
-#     write_a(atitle + "\n",at_titlefile1)
-#     write_a(aurl + "\n",at_urlfile1)
-# # 登録件数ファイル10件以上削除
-# del_outrange(at_titlefile1)
-# del_outrange(at_urlfile1)
-#
-# # ファイル比較
-# # 新旧ファイル呼び出し
-# ct = len(old_at_titlefile1)
-#
-# if ct == 0:
-#     shutil.copy(at_titlefile1,old_at_titlefile1)
-#     shutil.copy(at_urlfile1,old_at_urlfile1)
-#
-# new_at_titlefiles1 = file_open_lines(at_titlefile1)
-# new_at_urlfiles1 = file_open_lines(at_urlfile1)
-# old_at_titlefiles1 = file_open_lines(old_at_titlefile1)
-# old_at_urlfiles1 = file_open_lines(old_at_urlfile1)
-#
-# # 新旧比較、差分抽出、メッセージ記録
-# dt_now = datetime.datetime.now() #日付と時刻の表示
-# print("【アットホーム(滋賀)新着物件】" + dt_now.strftime
-# ('%Y年%m月%d日 %H:%M:%S') + "\n")
-# for i,n_file in enumerate(new_at_urlfiles1):
-#     if not n_file in old_at_urlfiles1:
-#         write_a(new_at_titlefiles1[i] + n_file+ "\n",send_file)
-#         print(new_at_titlefiles1[i] + n_file)
-# # 新ファイルを旧ファイルへコピー
-# write_w("",old_at_titlefile1)
-# write_w("",old_at_urlfile1)
-# shutil.copy(at_titlefile1,old_at_titlefile1)
-# shutil.copy(at_urlfile1,old_at_urlfile1)
-#
-# driver.quit()
-#
-# # アットホーム１終了===========================================
-#
-# # アットホーム２==============================================
-#
-# ahtome_url_top = "https://toushi-athome.jp/"
-# athome_url = "https://toushi-athome.jp/bklist?ITEM=ei&ART=42"
-#
-#
-# from webdriver_manager.chrome import ChromeDriverManager
-# driver = webdriver.Chrome(ChromeDriverManager().install())
-# # driver = webdriver.Chrome("./chromedriver")
-# driver.get(athome_url)
-#
-# time.sleep(5)
-# driver.find_element_by_link_text("三重").click()
-# time.sleep(3)
-# driver.find_element_by_xpath("//div/div/div[2]"
-#                              "/ul/li[1]/img").click()
-# time.sleep(3)
-# driver.find_element_by_id("GROUP_00360")
-# time.sleep(3)
-# chk_shiga = driver.find_element_by_css_selector\
-#     ("input[name='GROUP'][value='00360']")
-# chk_shiga.click()
-# time.sleep(4)
-# driver.find_element_by_xpath("//li[9]/img[1]").click()
-# time.sleep(4)
-# element = driver.find_element_by_id("sortcombo_1")
-# select_num = Select(element)
-# select_num.select_by_value("33")
-#
-# time.sleep(10)
-#
-# at_titlefile2= "data/at_title2.txt"
-# at_urlfile2 = "data/at_url2.txt"
-# old_at_titlefile2 = "data2/at_title2.txt"
-# old_at_urlfile2 = "data2/at_url2.txt"
-#
-# # 新着読み込み
-# write_w("",at_titlefile2)
-# write_w("",at_urlfile2)
-# at_css = "p.station > a"
-#
-# elems = driver.find_elements_by_css_selector(at_css)
-# for elem in elems:
-#     atitle = elem.text
-#     aurl = elem.get_attribute("href")
-#     write_a(atitle + "\n",at_titlefile2)
-#     write_a(aurl + "\n",at_urlfile2)
-# # 登録件数ファイル10件以上削除
-# del_outrange(at_titlefile2)
-# del_outrange(at_urlfile2)
-#
-# # ファイル比較
-# # 新旧ファイル呼び出し
-# ct = len(old_at_titlefile2)
-#
-# if ct == 0:
-#     shutil.copy(at_titlefile2,old_at_titlefile2)
-#     shutil.copy(at_urlfile2,old_at_urlfile2)
-#
-# new_at_titlefiles2 = file_open_lines(at_titlefile2)
-# new_at_urlfiles2 = file_open_lines(at_urlfile2)
-# old_at_titlefiles2 = file_open_lines(old_at_titlefile2)
-# old_at_urlfiles2 = file_open_lines(old_at_urlfile2)
-#
-# # 新旧比較、差分抽出、メッセージ記録
-# dt_now = datetime.datetime.now() #日付と時刻の表示
-# print("【アットホーム(三重)新着物件】" + dt_now.strftime
-# ('%Y年%m月%d日 %H:%M:%S') + "\n")
-# for i,n_file in enumerate(new_at_urlfiles2):
-#     if not n_file in old_at_urlfiles2:
-#         write_a(new_at_titlefiles2[i] + n_file + "\n",send_file)
-#         print(new_at_titlefiles2[i] + n_file)
-# # 新ファイルを旧ファイルへコピー
-# write_w("",old_at_titlefile2)
-# write_w("",old_at_urlfile2)
-# shutil.copy(at_titlefile2,old_at_titlefile2)
-# shutil.copy(at_urlfile2,old_at_urlfile2)
-#
-# driver.quit()
+from selenium.webdriver.support.ui import Select
+
+ahtome_url_top = "https://toushi-athome.jp/"
+athome_url = "https://toushi-athome.jp/bklist?ITEM=ei&ART=42"
+
+from webdriver_manager.chrome import ChromeDriverManager
+driver = webdriver.Chrome(ChromeDriverManager().install())
+# driver = webdriver.Chrome("./chromedriver")
+driver.get(athome_url)
+time.sleep(10)
+driver.find_element_by_link_text("滋賀").click()
+time.sleep(3)
+driver.find_element_by_xpath("//div/div/div[2]"
+                             "/ul/li[1]/img").click()
+time.sleep(3)
+driver.find_element_by_id("GROUP_00370")
+time.sleep(3)
+chk_shiga = driver.find_element_by_css_selector\
+    ("input[name='GROUP'][value='00370']")
+chk_shiga.click()
+time.sleep(4)
+driver.find_element_by_xpath("//li[9]/img[1]").click()
+time.sleep(4)
+element = driver.find_element_by_id("sortcombo_1")
+select_num = Select(element)
+select_num.select_by_value("33")
+
+time.sleep(10)
+
+at_titlefile1= "data/at_title1.txt"
+at_urlfile1 = "data/at_url1.txt"
+old_at_titlefile1 = "data2/at_title1.txt"
+old_at_urlfile1 = "data2/at_url1.txt"
+
+# 新着読み込み
+write_w("",at_titlefile1)
+write_w("",at_urlfile1)
+at_css = "p.station > a"
+
+elems = driver.find_elements_by_css_selector(at_css)
+for elem in elems:
+    atitle = elem.text
+    aurl = elem.get_attribute("href")
+    write_a(atitle + "\n",at_titlefile1)
+    write_a(aurl + "\n",at_urlfile1)
+# 登録件数ファイル10件以上削除
+del_outrange(at_titlefile1)
+del_outrange(at_urlfile1)
+
+# ファイル比較
+# 新旧ファイル呼び出し
+ct = len(old_at_titlefile1)
+
+if ct == 0:
+    shutil.copy(at_titlefile1,old_at_titlefile1)
+    shutil.copy(at_urlfile1,old_at_urlfile1)
+
+new_at_titlefiles1 = file_open_lines(at_titlefile1)
+new_at_urlfiles1 = file_open_lines(at_urlfile1)
+old_at_titlefiles1 = file_open_lines(old_at_titlefile1)
+old_at_urlfiles1 = file_open_lines(old_at_urlfile1)
+
+# 新旧比較、差分抽出、メッセージ記録
+dt_now = datetime.datetime.now() #日付と時刻の表示
+print("【アットホーム(滋賀)新着物件】" + dt_now.strftime
+('%Y年%m月%d日 %H:%M:%S') + "\n")
+for i,n_file in enumerate(new_at_urlfiles1):
+    if not n_file in old_at_urlfiles1:
+        write_a(new_at_titlefiles1[i] + n_file+ "\n",send_file)
+        print(new_at_titlefiles1[i] + n_file)
+# 新ファイルを旧ファイルへコピー
+write_w("",old_at_titlefile1)
+write_w("",old_at_urlfile1)
+shutil.copy(at_titlefile1,old_at_titlefile1)
+shutil.copy(at_urlfile1,old_at_urlfile1)
+
+driver.quit()
+
+# アットホーム１終了===========================================
+
+# アットホーム２==============================================
+
+ahtome_url_top = "https://toushi-athome.jp/"
+athome_url = "https://toushi-athome.jp/bklist?ITEM=ei&ART=42"
+
+
+from webdriver_manager.chrome import ChromeDriverManager
+driver = webdriver.Chrome(ChromeDriverManager().install())
+# driver = webdriver.Chrome("./chromedriver")
+driver.get(athome_url)
+
+time.sleep(5)
+driver.find_element_by_link_text("三重").click()
+time.sleep(3)
+driver.find_element_by_xpath("//div/div/div[2]"
+                             "/ul/li[1]/img").click()
+time.sleep(3)
+driver.find_element_by_id("GROUP_00360")
+time.sleep(3)
+chk_shiga = driver.find_element_by_css_selector\
+    ("input[name='GROUP'][value='00360']")
+chk_shiga.click()
+time.sleep(4)
+driver.find_element_by_xpath("//li[9]/img[1]").click()
+time.sleep(4)
+element = driver.find_element_by_id("sortcombo_1")
+select_num = Select(element)
+select_num.select_by_value("33")
+
+time.sleep(10)
+
+at_titlefile2= "data/at_title2.txt"
+at_urlfile2 = "data/at_url2.txt"
+old_at_titlefile2 = "data2/at_title2.txt"
+old_at_urlfile2 = "data2/at_url2.txt"
+
+# 新着読み込み
+write_w("",at_titlefile2)
+write_w("",at_urlfile2)
+at_css = "p.station > a"
+
+elems = driver.find_elements_by_css_selector(at_css)
+for elem in elems:
+    atitle = elem.text
+    aurl = elem.get_attribute("href")
+    write_a(atitle + "\n",at_titlefile2)
+    write_a(aurl + "\n",at_urlfile2)
+# 登録件数ファイル10件以上削除
+del_outrange(at_titlefile2)
+del_outrange(at_urlfile2)
+
+# ファイル比較
+# 新旧ファイル呼び出し
+ct = len(old_at_titlefile2)
+
+if ct == 0:
+    shutil.copy(at_titlefile2,old_at_titlefile2)
+    shutil.copy(at_urlfile2,old_at_urlfile2)
+
+new_at_titlefiles2 = file_open_lines(at_titlefile2)
+new_at_urlfiles2 = file_open_lines(at_urlfile2)
+old_at_titlefiles2 = file_open_lines(old_at_titlefile2)
+old_at_urlfiles2 = file_open_lines(old_at_urlfile2)
+
+# 新旧比較、差分抽出、メッセージ記録
+dt_now = datetime.datetime.now() #日付と時刻の表示
+print("【アットホーム(三重)新着物件】" + dt_now.strftime
+('%Y年%m月%d日 %H:%M:%S') + "\n")
+for i,n_file in enumerate(new_at_urlfiles2):
+    if not n_file in old_at_urlfiles2:
+        write_a(new_at_titlefiles2[i] + n_file + "\n",send_file)
+        print(new_at_titlefiles2[i] + n_file)
+# 新ファイルを旧ファイルへコピー
+write_w("",old_at_titlefile2)
+write_w("",old_at_urlfile2)
+shutil.copy(at_titlefile2,old_at_titlefile2)
+shutil.copy(at_urlfile2,old_at_urlfile2)
+
+driver.quit()
+# ==================================================================================================
+# RAINS 追加　2022-04-02
+# 引数、戻り値なし、WEBサイトの時間内の範囲で動作し、該当データがある場合、
+# 'send_record.txt'に勝手に書き込む
+# 修正などがある場合はすべて　’rains_scray.py’　に記述すること。
+
+rains.rains_function()
+
+# ==================================================================================================
+
 
 # 送信======================================================
 
@@ -713,7 +728,7 @@ def send_my_message(msg):
     # MIME形式に変換
     msg = make_mime(
         mail_to=to_address, #送信したい宛先を指定
-        subject='不動産新着情報',
+        subject='不動産最新情報',
         body= msg)
     # gmailに送信
     send_gmail(msg)
@@ -728,9 +743,11 @@ if os.path.isfile(send_file):
     print(mail_msgs)
     f.close()
     send_my_message(mail_msgs)
-# ======================================================
+# =================================================================================================
 
 # LINE
+
+
 tkfile = "talken.txt"
 talken_id = read_text(tkfile)
 
@@ -761,7 +778,7 @@ if os.path.isfile("data3/line_msg.txt"):
 if os.path.isfile("data3/msg.txt"):
     os.remove("data3/msg.txt")
 
-# 送信終了===================================================
+# 送信終了==========================================================================================
 
 
 
