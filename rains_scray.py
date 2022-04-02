@@ -1,19 +1,18 @@
 import time
 import datetime
-
+import difflib
 import re
 import os
 import csv
 from selenium import webdriver
-from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.support import expected_conditions as EC
+# from selenium.webdriver.support.ui import WebDriverWait
+# from selenium.webdriver.common.action_chains import ActionChains
+# from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
 
-# driver = webdriver.Chrome(ChromeDriverManager().install())
+driver = webdriver.Chrome(ChromeDriverManager().install())
 
 # RAINS アカウント情報 ==============================================
 
@@ -58,7 +57,6 @@ def scrowd_login():
 # =================================================================
 # 本ページ処理用
 def mainpage_scrowl(select_page_one):
-
     # 以下メインページ=================================================================
     driver.get('https://system.reins.jp/main/BK/GBK001210')
     # 売買物件検索
@@ -127,15 +125,47 @@ def mainpage_scrowl(select_page_one):
 
 
 # =================================================================
+# ファイルの増減を抽出
+def sabun_select(new, last):
+    # ファイル差分抽出
+    file1 = open(last) #  前回のリスト
+    file2 = open(new) # 今回のリスト
+    diff = difflib.Differ()
+    output_diff = diff.compare(file1.readlines(), file2.readlines())
 
-if __name__ == '__main__':
-    # アクセス時間制御処理
+    # 差分の結果を抽出
+    to_message = []
+    for data in output_diff:
+        # リストの増分のみ抽出
+        if data[0:1] in ['+']:
+            # print(data.replace('+', '').replace('"', ''))
+            to_message.append(data.replace('+', '').replace('"', '').replace('\n', ''))
+
+    file1.close()
+    file2.close()
+
+    # return to_message
+    print(to_message)
+
+
+# テスト用
+#
+# if __name__ == '__main__':
+#     file_new = 'new_data.csv'
+#     file_last = 'last_data.csv'
+#     # messageの返り値はリスト
+#     message = sabun_select(file_new,file_last)
+#
+#     print(message)
+
+# =================================================================
+
+def rains_function():
     dt = datetime.datetime.today()
     print('只今の時間：{}時'.format(dt.hour))
     if 7 <= int(dt.hour) <= 23:
         # 前回のファイルを旧ファイルに変更
         os.rename('new_data.csv', 'last_data.csv')
-        driver = webdriver.Chrome(ChromeDriverManager().install())
         # ログインページオープン
         scrowd_login()
         # 本ページ処理
@@ -146,30 +176,33 @@ if __name__ == '__main__':
             mainpage_scrowl(name)
         driver.close()
 
+        file_new = 'new_data.csv'
+        file_last = 'last_data.csv'
+        # 差分抽出
+        to_message = sabun_select(file_new, file_last)
+
+        # 今回のファイルを旧ファイルに変更
+        os.remove('last_data.csv')
+
+        return to_message
+
+    # サイト時間外についての処理
+    else:
+        print('WEB受付時間外により処理をスキップ')
+        pass
+
+
+
+if __name__=='__main__':
+    rains_function()
 
 
 
 
 
 
-    #     os.remove('last_data.csv')
-    # else:
-    #     print('WEB受付時間外により処理をスキップ')
-    #     pass
 
 
 
-
-
-
-
-
-
-
-
-
-    # テスト用
-    # name = "//option[. = '01:　三重四日市　外全']"
-    # mainpage_scrowl(name)
 
 

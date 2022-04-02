@@ -7,6 +7,7 @@
 import time
 import os
 import csv
+import difflib
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
@@ -49,22 +50,37 @@ from bs4 import BeautifulSoup
 #         csvreader2 = csv.reader(fn)
 
 
-import difflib
-file_new = 'new_data.csv'
-file_last = 'last_data.csv'
+def sabun_select(new, last):
+    # ファイル差分抽出
+    file1 = open(last) #  前回のリスト
+    file2 = open(new) # 今回のリスト
+    diff = difflib.Differ()
+    output_diff = diff.compare(file1.readlines(), file2.readlines())
 
-file1 = open(file_new)
-file2 = open(file_last)
-diff = difflib.Differ()
-output_diff = diff.compare(file1.readlines(), file2.readlines())
+    # 差分の結果を抽出
+    to_message = []
+    for data in output_diff:
+        # リストの増分のみ抽出
+        if data[0:1] in ['+']:
+            # print(data.replace('+', '').replace('"', ''))
+            to_message.append(data.replace('+', '').replace('"', '').replace('\n', ''))
 
-for data in output_diff:
+    file1.close()
+    file2.close()
 
-    if data[0:1] in ['-']:
-        print(data.replace('-', '').replace('"', ''))
+    return to_message
 
-file1.close()
-file2.close()
+# テスト用
+
+if __name__ == '__main__':
+    file_new = 'new_data.csv'
+    file_last = 'last_data.csv'
+    # messageの返り値はリスト
+    message = sabun_select(file_new,file_last)
+
+    print(message)
+
+
 
 
 

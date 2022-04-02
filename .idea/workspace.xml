@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc822c3-3ae9-44f2-9a2a-222152d061a3" name="変更" comment="更新：2022-03-28&#10;要素取得、ページ巡回まで&#10;終わり">
+    <list default="true" id="9fc822c3-3ae9-44f2-9a2a-222152d061a3" name="変更" comment="更新：2022-04-02　11:43&#10;ファイルの差分抽出&#10;クライアントのもとファイルインポート">
+      <change afterPath="$PROJECT_DIR$/last_data.csv" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/new_data.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rains_scray.py" beforeDir="false" afterPath="$PROJECT_DIR$/rains_scray.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/新案件2022-03-20.txt" beforeDir="false" afterPath="$PROJECT_DIR$/新案件2022-03-20.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/動作チェック用.py" beforeDir="false" afterPath="$PROJECT_DIR$/動作チェック用.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +50,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RunManager" selected="Python.rains_scray">
     <configuration name="動作チェック用" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -238,7 +239,21 @@
       <option name="project" value="LOCAL" />
       <updated>1648472066952</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="更新：2022-03-29&#10;時間設定追加&#10;コード関数化整合性確認&#10;&#10;157行目〜&#10;差分判別コード作成（未検証）">
+      <created>1648563841111</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1648563841112</updated>
+    </task>
+    <task id="LOCAL-00010" summary="更新：2022-04-02　11:43&#10;ファイルの差分抽出&#10;クライアントのもとファイルインポート">
+      <created>1648867481991</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1648867481991</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -273,7 +288,9 @@
     <MESSAGE value="更新：2022-03-25 14:17&#10;差分検出をCSVにしようと思案中&#10;検出要素をどれにするか調査すること" />
     <MESSAGE value="更新：2022-03-27 22:17&#10;ページ保存スクリプト追加&#10;HTMLファイル保存&#10;メインページ誤作動修正" />
     <MESSAGE value="更新：2022-03-28&#10;要素取得、ページ巡回まで&#10;終わり" />
-    <option name="LAST_COMMIT_MESSAGE" value="更新：2022-03-28&#10;要素取得、ページ巡回まで&#10;終わり" />
+    <MESSAGE value="更新：2022-03-29&#10;時間設定追加&#10;コード関数化整合性確認&#10;&#10;157行目〜&#10;差分判別コード作成（未検証）" />
+    <MESSAGE value="更新：2022-04-02　11:43&#10;ファイルの差分抽出&#10;クライアントのもとファイルインポート" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新：2022-04-02　11:43&#10;ファイルの差分抽出&#10;クライアントのもとファイルインポート" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
